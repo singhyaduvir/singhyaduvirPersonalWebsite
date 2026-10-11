@@ -72,7 +72,7 @@ export const projects: Project[] = [
       "Research project on pavement-condition classification from real-world audio, combining speech transcription, feature engineering, and model evaluation.",
     featured: true,
     layout: "editorial",
-    tags: ["Research", "NLP", "Machine learning"],
+    tags: ["Research", "NLP", "Transformer Architecture", "Sentiment Analysis"],
     image: {
       src: "/images/projects/smart-cities/paser-preview.png",
       alt: "Line chart showing model accuracy increasing with degrees of freedom.",
@@ -143,12 +143,12 @@ export const projects: Project[] = [
   {
     slug: "bifrost",
     title: "BiFrost",
-    kicker: "Communications Platform",
+    kicker: "Clinical Trials Communications Platform",
     summary:
       "Clinical trial matching application for structured retrieval, data validation, and privacy-sensitive records handling.",
     featured: true,
     layout: "editorial",
-    tags: ["Healthcare", "TypeScript", "PostgreSQL"],
+    tags: ["Healthcare", "Data Security", "TypeScript", "PostgreSQL"],
     image: {
       src: "/images/projects/cliniq/bifrost-hero-demo-frame-1.jpg",
       alt: "BiFrost landing page preview still from the project demo",
@@ -215,7 +215,7 @@ export const projects: Project[] = [
     featured: true,
     layout: "editorial",
     previewAspect: "landscape",
-    tags: ["Interface"],
+    tags: ["Interface", "iOS", "SwiftUI", "Asynchronous Programming"],
     image: {
       src: "/images/projects/momentum/momentum-preview.png",
       alt: "Momentum preview featuring three mobile app screens.",

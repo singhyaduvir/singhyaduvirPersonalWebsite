@@ -16,14 +16,14 @@ export type ExploringTopic = {
 export const exploringTopics: ExploringTopic[] = [
   {
     id: "llms",
-    title: "Large language models",
-    note: "Exploring LLM-assisted workflows for schema mapping and terminology normalization.",
+    title: "CAD Implementation with LLMs",
+    note: "Exploring LLM-assisted CAD softwares for smooth, fast, accurate generation of 3D models applicable in any industry.",
     active: true,
   },
   {
     id: "ml-eval",
-    title: "Machine learning evaluation",
-    note: "Analyzing model accuracy, confidence, and misclassification patterns.",
+    title: "Healthcare data security",
+    note: "How to maintain secure platforms for handling sensitive healthcare information.",
     active: true,
   },
 ];
