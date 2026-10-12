@@ -14,11 +14,7 @@ export function Contact() {
   return (
     <section id="contact" className="scroll-mt-24 border-t border-border py-12 sm:py-16">
       <Container>
-        <SectionHeading
-          eyebrow="06"
-          title="Contact"
-          description=""
-        />
+        <SectionHeading eyebrow="06" title="Contact" />
         <div className="grid gap-10 lg:grid-cols-12">
           <p className="font-serif text-3xl leading-snug text-ink sm:text-4xl lg:col-span-6">
             The most reliable way to reach me right now is by email or LinkedIn.
@@ -43,12 +39,7 @@ export function Contact() {
                   {email}
                 </a>
               </li>
-            ) : (
-              <li className="flex items-baseline justify-between gap-4 border-b border-border pb-3 text-muted">
-                <span className="text-subtle">Email</span>
-                <span>Not published yet</span>
-              </li>
-            )}
+            ) : null}
             {hasHref(resume) ? (
               <li className="flex items-baseline justify-between gap-4 border-b border-border pb-3">
                 <span className="text-subtle">Resume</span>
@@ -56,12 +47,7 @@ export function Contact() {
                   Download PDF
                 </a>
               </li>
-            ) : (
-              <li className="flex items-baseline justify-between gap-4 border-b border-border pb-3 text-muted">
-                <span className="text-subtle">Resume</span>
-                <span>Not published yet</span>
-              </li>
-            )}
+            ) : null}
           </ul>
         </div>
         <div className="mt-12 max-w-2xl">

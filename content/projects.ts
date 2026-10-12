@@ -1,19 +1,3 @@
-/**
- * Selected work.
- *
- * To add a screenshot later:
- * 1. Place the file in `public/images/projects/` (png, jpg, or webp).
- * 2. Set `image.src` to that public path, e.g. "/images/projects/apollo.png".
- * 3. Write a specific `image.alt`.
- *
- * To add a PDF (slides, write-up):
- * 1. Place the file in `public/documents/`.
- * 2. Add an entry to `documents` with `href` set to that public path.
- *
- * Leave copy fields empty rather than inventing details. The UI renders an
- * intentional preview state when description or media is still pending.
- */
-
 export type ProjectDocument = {
   label: string;
   href: string | null;
@@ -51,9 +35,8 @@ export type Project = {
   previewAspect?: "wide" | "photo" | "square" | "landscape";
   tags: string[];
   image: {
-    src: string | null;
+    src: string;
     alt: string;
-    pendingLabel: string;
   };
   video?: ProjectVideo;
   excerpts?: ProjectExcerpt[];
@@ -76,7 +59,6 @@ export const projects: Project[] = [
     image: {
       src: "/images/projects/smart-cities/paser-preview.png",
       alt: "Line chart showing model accuracy increasing with degrees of freedom.",
-      pendingLabel: "Preview image forthcoming",
     },
     excerpts: [
       {
@@ -152,7 +134,6 @@ export const projects: Project[] = [
     image: {
       src: "/images/projects/cliniq/bifrost-hero-demo-frame-1.jpg",
       alt: "BiFrost landing page preview still from the project demo",
-      pendingLabel: "Hero demo video preview",
     },
     video: {
       src: "/videos/projects/cliniq/bifrost-hero-demo.mp4",
@@ -219,7 +200,6 @@ export const projects: Project[] = [
     image: {
       src: "/images/projects/momentum/momentum-preview.png",
       alt: "Momentum preview featuring three mobile app screens.",
-      pendingLabel: "Momentum interface preview",
     },
     excerptColumns: 3,
     excerptTitle: "Overview",
@@ -255,67 +235,6 @@ export const projects: Project[] = [
       },
     ],
   },
-  // {
-  //   slug: "apollo",
-  //   title: "Apollo",
-  //   kicker: "Product",
-  //   summary:
-  //     "GitHub-driven automation product for repository reconciliation, workflow review, and human-in-the-loop AI execution.",
-  //   featured: true,
-  //   layout: "editorial",
-  //   tags: ["Automation", "FastAPI", "LangGraph"],
-  //   image: {
-  //     src: null,
-  //     alt: "Apollo interface preview",
-  //     pendingLabel: "UI screenshot forthcoming",
-  //   },
-  //   documents: [],
-  //   sections: [
-  //     {
-  //       id: "overview",
-  //       title: "Overview",
-  //       body: "Apollo is a software engineering project focused on automating repository workflows by retrieving GitHub context, structuring technical information, and routing AI-generated changes through a human review step before execution.",
-  //     },
-  //     {
-  //       id: "workflow",
-  //       title: "Workflow",
-  //       body: "The system integrates GitHub APIs with backend services to gather repository data, interpret technical context, and create structured outputs for downstream tasks. Review checkpoints are included to minimize silent errors and give operators control over automated actions.",
-  //     },
-  //     {
-  //       id: "stack",
-  //       title: "Stack",
-  //       body: "This work used Python, FastAPI, and LangGraph to build the automation layer, with a focus on maintainable service boundaries and reliable execution patterns.",
-  //     },
-  //     {
-  //       id: "impact",
-  //       title: "Impact",
-  //       body: "The workflow reduced manual project reconciliation time by 80%, helping compress repetitive review work while preserving a clear validation layer for AI-assisted changes.",
-  //     },
-  //   ],
-  // },
-  // {
-  //   slug: "brivida",
-  //   title: "Brivida",
-  //   kicker: "AI Services Startup",
-  //   summary:
-  //     "A second image-led product entry with a distinct composition from Momentum, waiting on a real interface view.",
-  //   featured: true,
-  //   layout: "editorial",
-  //   tags: ["Interface"],
-  //   image: {
-  //     src: null,
-  //     alt: "Brivida interface",
-  //     pendingLabel: "Interface view forthcoming",
-  //   },
-  //   documents: [],
-  //   sections: [
-  //     {
-  //       id: "overview",
-  //       title: "Overview",
-  //       body: "Layout and visual treatment differ from Momentum so the two interface studies do not read as identical cards. Add the screenshot and a concise description here when available.",
-  //     },
-  //   ],
-  // }
 ];
 
 export function getProject(slug: string): Project | undefined {

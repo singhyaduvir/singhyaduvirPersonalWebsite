@@ -124,7 +124,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <MediaFrame
             src={project.image.src}
             alt={project.image.alt}
-            pendingLabel={project.image.pendingLabel}
             title={project.title}
             aspect={leadImageAspect}
             priority
@@ -135,7 +134,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <Container className="mt-16">
         <div className="grid gap-12 lg:grid-cols-12">
-          <div className="space-y-12 lg:col-span-8">
+          <div
+            className={`space-y-12 ${project.documents.length > 0 ? "lg:col-span-8" : "lg:col-span-12"}`}
+          >
             {project.sections.map((section) => (
               <section key={section.id} id={section.id}>
                 <h2 className="font-serif text-2xl text-ink sm:text-3xl">{section.title}</h2>
@@ -143,12 +144,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </section>
             ))}
           </div>
-          <aside className="lg:col-span-4">
-            <div className="border border-border bg-surface p-6">
-              <h2 className="text-xs tracking-[0.16em] text-subtle uppercase">
-                Presentation and artifacts
-              </h2>
-              {project.documents.length > 0 ? (
+          {project.documents.length > 0 ? (
+            <aside className="lg:col-span-4">
+              <div className="border border-border bg-surface p-6">
+                <h2 className="text-xs tracking-[0.16em] text-subtle uppercase">
+                  Presentation and artifacts
+                </h2>
                 <ul className="mt-5 space-y-4">
                   {project.documents.map((document) => (
                     <li key={document.label} className="text-sm">
@@ -168,13 +169,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </li>
                   ))}
                 </ul>
-              ) : (
-                <p className="mt-4 text-sm leading-6 text-muted">
-                  No files are attached yet. PDFs can be added in public/documents/ and linked from this project’s data entry.
-                </p>
-              )}
-            </div>
-          </aside>
+              </div>
+            </aside>
+          ) : null}
         </div>
       </Container>
     </article>
