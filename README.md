@@ -18,6 +18,24 @@ npm run build
 npm start
 ```
 
+## Email alerts
+
+Contact form submissions and first visits are sent to the Gmail address in
+`GMAIL_USER` using Nodemailer and a Gmail App Password.
+
+1. Enable 2-Step Verification in your Google Account.
+2. Open your Google Account's **App passwords** settings and create an app
+   password for this website.
+3. Copy `.env.example` to `.env.local` and set `GMAIL_USER` to your Gmail
+   address and `GMAIL_APP_PASSWORD` to the generated app password (without
+   spaces). Keep the password private; do not add a `NEXT_PUBLIC_` prefix.
+4. Add `GMAIL_USER` and `GMAIL_APP_PASSWORD` as server-side environment
+   variables in your hosting dashboard, then redeploy.
+
+The `.env.local` file is ignored by Git. If the hosting provider blocks SMTP
+connections, Gmail SMTP delivery will fail; switch to the Gmail API with OAuth2
+rather than exposing credentials or silently changing email providers.
+
 ## Where to edit content
 
 | File | Purpose |

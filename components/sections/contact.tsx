@@ -1,6 +1,7 @@
 import { site } from "@/content/site";
 import { hasHref, mailtoHref } from "@/lib/links";
 import { Container } from "@/components/container";
+import { ContactForm } from "@/components/contact-form";
 import { ExternalLink } from "@/components/external-link";
 import { SectionHeading } from "@/components/section-heading";
 
@@ -62,6 +63,10 @@ export function Contact() {
               </li>
             )}
           </ul>
+        </div>
+        <div className="mt-12 max-w-2xl">
+          <h3 className="mb-5 font-serif text-2xl text-ink">Send me a message</h3>
+          <ContactForm />
         </div>
       </Container>
     </section>

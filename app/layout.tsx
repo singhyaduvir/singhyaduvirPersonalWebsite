@@ -3,6 +3,7 @@ import { Inter, Newsreader } from "next/font/google";
 import { site } from "@/content/site";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { VisitorEmailAlert } from "@/components/visitor-email-alert";
 import { getOpenGraphUrl } from "@/lib/links";
 import "./globals.css";
 
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background font-sans text-foreground">
+        <VisitorEmailAlert />
         <a href="#main" className="skip-link">
           Skip to content
         </a>
