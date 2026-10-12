@@ -1,10 +1,3 @@
-/**
- * Reading list.
- *
- * Add books here and place cover images in `public/images/books/`.
- * An empty array renders a composed empty state.
- */
-
 export type ReadingStatus = "reading" | "finished" | "queued";
 
 export type Book = {
@@ -15,7 +8,7 @@ export type Book = {
   note?: string;
   review?: string;
   cover: {
-    src: string | null;
+    src: string;
     alt: string;
   };
 };

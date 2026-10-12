@@ -103,7 +103,6 @@ function ProjectPreview({
       <MediaFrame
         src={project.image.src}
         alt={project.image.alt}
-        pendingLabel={project.image.pendingLabel}
         title={project.title}
         aspect={aspect}
         video={project.video}

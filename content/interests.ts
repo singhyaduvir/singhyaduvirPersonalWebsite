@@ -1,17 +1,9 @@
-/**
- * Beyond work.
- *
- * Add hobbies here and place photos in `public/images/hobbies/`.
- * An empty array renders a composed empty state. Do not treat placeholder
- * frames as biographical facts.
- */
-
 export type Interest = {
   id: string;
   title: string;
   description: string;
-  image: {
-    src: string | null;
+  image?: {
+    src: string;
     alt: string;
   };
   video?: {
@@ -34,10 +26,6 @@ export const interests: Interest[] = [
     id: "guitar",
     title: "Guitar",
     description: "The first instrument I ever picked up and never put down. I love to destress and make my own musical scores and pieces.",
-    image: {
-      src: null,
-      alt: "Guitar",
-    },
     video: {
       src: "/videos/hobbies/guitar-clip.mp4",
       type: "video/mp4",
