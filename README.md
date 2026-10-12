@@ -36,6 +36,24 @@ The `.env.local` file is ignored by Git. If the hosting provider blocks SMTP
 connections, Gmail SMTP delivery will fail; switch to the Gmail API with OAuth2
 rather than exposing credentials or silently changing email providers.
 
+## Deploying to Vercel
+
+1. Import the repository into Vercel and keep the **Next.js** framework preset
+   and default build command (`npm run build`).
+2. Use Node.js 20.9 or newer for the project runtime.
+3. In Vercel project settings, add `GMAIL_USER` and `GMAIL_APP_PASSWORD` for
+   Production (and Preview if contact forms should work there). Optionally set
+   `SITE_URL` to the production site's canonical HTTPS URL; otherwise metadata
+   uses Vercel's deployment URL.
+4. Add the production domain in Vercel, deploy, then verify the home page,
+   project pages, resume download, contact form delivery, and deployment logs.
+
+The API's in-memory rate limits are best-effort per running server instance, not
+a shared limit across Vercel instances. Configure Vercel Firewall rate limits
+for `/api/contact` and `/api/visitor` if shared, durable abuse protection is
+required. The visitor notification is also subject to your Gmail sending
+limits.
+
 ## Where to edit content
 
 | File | Purpose |

@@ -1,10 +1,16 @@
 import { sendAlert } from "@/lib/sendAlert";
+import {
+  getClientIp,
+  isRateLimited,
+  isSameOriginRequest,
+} from "@/lib/rate-limit";
 
 const pathnamePattern = /^\/(?!\/)[^\r\n]{0,2047}$/;
+const maxRequests = 1;
+const windowMs = 10 * 60 * 1000;
 
 export async function POST(request: Request) {
-  const origin = request.headers.get("origin");
-  if (!origin || origin !== new URL(request.url).origin) {
+  if (!isSameOriginRequest(request)) {
     return Response.json({ error: "Forbidden" }, { status: 403 });
   }
 
@@ -25,6 +31,13 @@ export async function POST(request: Request) {
 
   if (pathname === null || !pathnamePattern.test(pathname)) {
     return Response.json({ error: "Invalid page path" }, { status: 400 });
+  }
+
+  if (isRateLimited(`visitor:${getClientIp(request)}`, maxRequests, windowMs)) {
+    return Response.json(
+      { error: "Too many visitor alerts. Please try again later." },
+      { status: 429 },
+    );
   }
 
   try {

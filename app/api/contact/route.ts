@@ -1,8 +1,12 @@
 import { sendAlert } from "@/lib/sendAlert";
+import {
+  getClientIp,
+  isRateLimited,
+  isSameOriginRequest,
+} from "@/lib/rate-limit";
 
 const maxRequests = 5;
 const windowMs = 10 * 60 * 1000;
-const rateLimits = new Map<string, { count: number; resetAt: number }>();
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const controlCharacters = /[\u0000-\u001f\u007f]/;
 
@@ -10,23 +14,11 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-function isRateLimited(ip: string, now: number) {
-  const current = rateLimits.get(ip);
-
-  if (!current || current.resetAt <= now) {
-    rateLimits.set(ip, { count: 1, resetAt: now + windowMs });
-    return false;
-  }
-
-  if (current.count >= maxRequests) {
-    return true;
-  }
-
-  current.count += 1;
-  return false;
-}
-
 export async function POST(request: Request) {
+  if (!isSameOriginRequest(request)) {
+    return Response.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -74,13 +66,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const forwardedFor = request.headers.get("x-forwarded-for");
-  const ip =
-    forwardedFor?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
-    "unknown";
-
-  if (isRateLimited(ip, Date.now())) {
+  if (isRateLimited(`contact:${getClientIp(request)}`, maxRequests, windowMs)) {
     return Response.json(
       { error: "Too many messages. Please try again later." },
       { status: 429 },

@@ -9,5 +9,15 @@ export function mailtoHref(email: string): string {
 }
 
 export function getOpenGraphUrl(): string | undefined {
-  return hasHref(site.metadata.url) ? site.metadata.url : undefined;
+  if (hasHref(site.metadata.url)) {
+    return site.metadata.url;
+  }
+
+  if (hasHref(process.env.SITE_URL)) {
+    return process.env.SITE_URL;
+  }
+
+  const vercelUrl =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
+  return hasHref(vercelUrl) ? `https://${vercelUrl}` : undefined;
 }
