@@ -146,21 +146,29 @@ export const projects: Project[] = [
         src: "/images/projects/cliniq/bifrost-landing-ss.png",
         alt: "BiFrost landing page showing the patient and trial onboarding flow.",
         caption: "Landing page",
+        width: 3024,
+        height: 1753,
       },
       {
         src: "/images/projects/cliniq/bifrost-dashboard-ss.png",
         alt: "BiFrost dashboard view summarizing clinical trial match data.",
         caption: "Dashboard view",
+        width: 3024,
+        height: 1753,
       },
       {
         src: "/images/projects/cliniq/bifrost-hero-demo-frame-1.jpg",
         alt: "BiFrost hero demo frame showing the onboarding and workflow experience.",
         caption: "Hero demo still 1",
+        width: 3024,
+        height: 1753,
       },
       {
         src: "/images/projects/cliniq/bifrost-hero-demo-frame-2.jpg",
         alt: "BiFrost hero demo frame showing navigation across the patient-trial match workflow.",
         caption: "Hero demo still 2",
+        width: 3024,
+        height: 1753,
       },
     ],
     documents: [],
@@ -168,22 +176,22 @@ export const projects: Project[] = [
       {
         id: "overview",
         title: "Overview",
-        body: "CliniQ is a TypeScript and Node.js application designed to match patients or trial records through structured data retrieval, parsing, and validation workflows.",
+        body: "BiFrost is a three-way TypeScript and Node.js clinical matching platform built to connect patients, doctors, and clinical trial investigators by orchestrating structured data intake, parsing, validation, and matching logic into a single operational workflow. That means an application that supports patient eligibility collection, trial discovery, medical document handling, and role-specific dashboards for patients, healthcare professionals, and investigators, all centered on turning clinical details into a consistent, usable matching model.",
       },
       {
         id: "data-workflow",
         title: "Data workflow",
-        body: "The application ingests inconsistent inputs, normalizes records, and validates the resulting database entries so downstream components can rely on consistent data access patterns.",
+        body: "The application begins with inconsistent inputs from multiple sources: patient forms capture age, diagnoses, biomarkers, lab values, ECOG status, and treatment history in varying formats, while ClinicalTrials.gov responses arrive as nested, semi-structured records with eligibility text that must be interpreted rather than trusted as-is. BiFrost normalizes these inputs into reusable profiles and transformed trial objects so that downstream logic can work with a stable schema instead of ad hoc field handling. This includes extracting age thresholds, sex constraints, exclusions, location details, and lab criteria from free-text eligibility rules. Once normalized, the matching engine validates records against patient profiles and produces ranked results with reasons and warnings, ensuring that the application operates on consistent, auditable data rather than raw or ambiguous strings.",
       },
       {
         id: "platform",
         title: "Platform and systems",
-        body: "The system uses PostgreSQL, Prisma, and REST APIs to manage relational data access and application logic. Data security is addressed with AES-256-GCM encryption and HTTPS/TLS protections for sensitive information in transit and at rest.",
+        body: "The project sits on a modern web and data stack combining TypeScript, Next.js, PostgreSQL, Prisma, Supabase, and REST APIs to support both application logic and secure relational data management. It uses ClinicalTrials.gov as an external trial source, Supabase for authentication and document storage, and Prisma/PostgreSQL to define and manage structured records in a maintainable way, creating a layered architecture where user interfaces, API routes, storage services, and relational models work together rather than in isolation. Security is a core part of the design, with AES-256-GCM encryption and HTTPS/TLS protections used to protect sensitive clinical information in transit and at rest, which is critical in a healthcare context where patient records, uploaded documents, and trial matching data all carry privacy implications.",
       },
       {
         id: "outcome",
         title: "Outcome",
-        body: "This project strengthened the core data platform for clinical matching by combining ingestion, validation, schema design, and secure storage into a single maintainable application flow.",
+        body: "This project strengthens the core clinical matching platform by combining ingestion, normalization, validation, and secure storage into one coherent application flow that is easier to maintain and extend over time. The result is a system that does more than display trial opportunities: it converts raw, heterogeneous data into a trusted decision-support layer that can compare patient profiles against eligibility criteria, manage document records responsibly, and support role-based clinical workflows across the patient journey. In practical terms, BiFrost turns fragmented clinical information into a structured matching engine that improves reliability, supports operational clarity, and provides a more solid foundation for future enhancements in healthcare trial coordination.",
       },
     ],
   },
@@ -231,8 +239,23 @@ export const projects: Project[] = [
       {
         id: "overview",
         title: "Overview",
-        body: "Momentum is a mobile productivity interface for building habits, managing daily routines, and tracking focused work sessions.",
+        body: "Momentum is a mobile productivity interface for building habits, managing daily routines, and tracking focused work sessions. There are three main features. An independent habit list in which you can keep track of any type, metric, and frequency of a habit. Then there is a focus timer that allows you to set a duration and track your progress through a session and lastly, an online, challenge based feature in which you can connect with friends to complete challenges together.",
       },
+      {
+        id: "data-workflow",
+        title: "Data workflow",
+        body: "The application takes in quantitative and qualitative data from the user, such as habit completion, session duration, and challenge progress. This data is then stored using Firebase Firestore and is used to update the user interface in real-time. The application also uses local notifications to remind users of their habits and focus sessions, and it provides analytics on habit completion and focus session performance. User-to-user data interactions are stored in Firestore and are used to allow users to see their friends' progress and compete in challenges.",
+      },
+      {
+        id: "platform",
+        title: "Platform and systems",
+        body: "The project sits on a Swift-based mobile framework with a modern architecture supporting reactive programming and seamless integration with Apple's ecosystem.",
+      },
+      {
+        id: "outcome",
+        title: "Outcome",
+        body: "This project has provided a robust solution for managing daily routines and building productive habits, with a focus on user engagement and real-time feedback.",
+      }
     ],
   },
 ];
