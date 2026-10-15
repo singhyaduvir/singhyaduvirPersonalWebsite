@@ -23,6 +23,12 @@ npm start
 Contact form submissions and first visits are sent to the Gmail address in
 `GMAIL_USER` using Nodemailer and a Gmail App Password.
 
+First-visit alerts may also include approximate location fields (such as city,
+postal code, region, country, coordinates, or time zone) supplied by Vercel
+from the visitor's public IP address. This is not GPS location; it may identify
+a VPN or proxy exit location, and no attempt is made to bypass VPNs or other
+privacy protections. Location is omitted when Vercel does not provide it.
+
 1. Enable 2-Step Verification in your Google Account.
 2. Open your Google Account's **App passwords** settings and create an app
    password for this website.
