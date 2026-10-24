@@ -59,6 +59,232 @@ body {
   top: 1rem;
 }
 
+.guide-stage {
+  position: relative;
+  isolation: isolate;
+  height: calc(100dvh - 7rem);
+  min-height: 32rem;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.guide-panel-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.guide-panel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity;
+}
+
+.guide-panel-scroll {
+  height: 100%;
+  overflow-y: auto;
+  background: var(--background);
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  .guide-panel-scroll {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .guide-panel-scroll {
+    padding-bottom: 2rem;
+    width: 60%;
+    border-right: 1px solid var(--border);
+  }
+}
+
+.guide-figure {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 20;
+  display: flex;
+  width: min(22rem, calc(100% - 2rem));
+  flex-direction: column;
+  align-items: center;
+  transform: translate3d(-50%, -58%, 0);
+  transition: transform 600ms ease-in-out;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.guide-stage[data-view="panel"] .guide-figure {
+  width: 18rem;
+  transform: translate3d(calc(32vw - 50%), -52%, 0);
+}
+
+@media (max-width: 1023px) {
+  .guide-stage[data-view="panel"] .guide-figure {
+    width: 11rem;
+    transform: translate3d(calc(34vw - 50%), calc(-50vh + 1rem), 0);
+  }
+
+  .guide-stage[data-view="panel"] .guide-panel-scroll {
+    padding-top: 11rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .guide-stage[data-view="panel"] .guide-figure {
+    width: 6.5rem;
+    transform: translate3d(calc(38vw - 50%), calc(-50vh + 0.5rem), 0);
+  }
+
+  .guide-stage[data-view="panel"] .guide-panel-scroll {
+    padding-top: 8.5rem;
+  }
+
+  .guide-stage[data-view="panel"] .guide-bubble {
+    font-size: 0.7rem;
+    line-height: 1.35;
+    padding: 0.45rem 0.55rem;
+  }
+}
+
+.guide-bubble {
+  position: relative;
+  pointer-events: none;
+  margin-bottom: 0.85rem;
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.85rem 1rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+  will-change: opacity;
+}
+
+.guide-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.guide-robot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.guide-robot-idle {
+  width: min(12rem, 70%);
+}
+
+@media (min-width: 1024px) {
+  .guide-robot-idle {
+    width: 13rem;
+  }
+}
+
+.guide-stage[data-view="intro"] .guide-robot-idle {
+  animation: robot-idle-bob 3.4s ease-in-out infinite;
+}
+
+.guide-robot-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: robot-blink 4.8s ease-in-out infinite;
+}
+
+.guide-input-dock {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 30;
+  display: flex;
+  width: min(34rem, calc(100% - 2rem));
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 0.4rem 0.4rem 0.4rem 1.1rem;
+  transform: translate3d(-50%, 9.25rem, 0);
+  transition: transform 600ms ease-in-out;
+  will-change: transform;
+}
+
+.guide-stage[data-view="panel"] .guide-input-dock {
+  width: min(20rem, calc(40% - 1.5rem));
+  transform: translate3d(calc(32vw - 50%), 8.5rem, 0);
+}
+
+@media (max-width: 1023px) {
+  .guide-stage[data-view="panel"] .guide-input-dock {
+    width: min(34rem, calc(100% - 2rem));
+    transform: translate3d(
+      -50%,
+      calc(50dvh - 7.4rem - env(safe-area-inset-bottom)),
+      0
+    );
+  }
+}
+
+.guide-input-dock input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.guide-input-dock input::placeholder {
+  color: var(--subtle);
+}
+
+.guide-input-dock button {
+  display: inline-flex;
+  width: 2.35rem;
+  height: 2.35rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--background);
+}
+
+@keyframes robot-idle-bob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes robot-blink {
+  0%,
+  88%,
+  100% {
+    transform: scaleY(1);
+  }
+  92% {
+    transform: scaleY(0.08);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
