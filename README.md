@@ -20,8 +20,9 @@ npm start
 
 ## Email alerts
 
-Contact form submissions and first visits are sent to the Gmail address in
-`GMAIL_USER` using Nodemailer and a Gmail App Password.
+Contact form submissions and first visits are sent to the contact address in
+`content/site.ts`. Nodemailer uses `GMAIL_USER` and a Gmail App Password to
+authenticate and send the alerts.
 
 First-visit alerts may also include approximate location fields (such as city,
 postal code, region, country, coordinates, or time zone) supplied by Vercel

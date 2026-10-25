@@ -1,4 +1,5 @@
 import nodemailer, { type Transporter } from "nodemailer";
+import { site } from "@/content/site";
 
 let transporter: Transporter | undefined;
 
@@ -26,7 +27,7 @@ export async function sendAlert(
 
   await transporter.sendMail({
     from: user,
-    to: user,
+    to: site.links.email,
     subject,
     text,
     ...(replyTo ? { replyTo } : {}),
