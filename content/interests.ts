@@ -31,13 +31,4 @@ export const interests: Interest[] = [
       type: "video/mp4",
     },
   },
-  {
-    id: "cooking",
-    title: "Cooking",
-    description: "As a passionate consumer of food, I love exploring new recipes and making delicious meals.",
-    image: {
-      src: "/images/hobbies/cooking.jpg",
-      alt: "Plates of pasta with chicken and herbs.",
-    },
-  },
 ];
