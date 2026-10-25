@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { navItems, site } from "@/content/site";
 import { hasHref } from "@/lib/links";
@@ -9,9 +10,14 @@ import { Container } from "@/components/container";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background">
+    <header
+      className={`sticky top-0 z-40 border-b border-border bg-background ${
+        pathname === "/" ? "home-entry-header" : ""
+      }`}
+    >
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
