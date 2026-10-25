@@ -172,20 +172,22 @@ export function NavigationView({
       </div>
 
       <div className="guide-figure">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={bubble}
-            role="status"
-            aria-live="polite"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: reducedMotion ? 0.12 : 0.22 }}
-            className="guide-bubble"
-          >
-            <p>{bubble}</p>
-          </motion.div>
-        </AnimatePresence>
+        <div className="guide-bubble-reveal">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={bubble}
+              role="status"
+              aria-live="polite"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: reducedMotion ? 0.12 : 0.22 }}
+              className="guide-bubble"
+            >
+              <p>{bubble}</p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
         <div className="guide-robot-idle">
           <GuideRobot className="text-ink" />
         </div>

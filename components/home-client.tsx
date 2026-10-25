@@ -28,12 +28,12 @@ function HomeTabs({
       <div
         role="tablist"
         aria-label="Home view"
-        className="mx-auto flex w-full max-w-6xl gap-1 px-5 sm:px-8"
+        className="home-entry-tabs mx-auto flex w-full max-w-6xl gap-1 px-5 sm:px-8"
       >
         {(
           [
-            { id: "navigation", label: "Navigation" },
-            { id: "consolidated", label: "Consolidated" },
+            { id: "navigation", label: "Virbot" },
+            { id: "consolidated", label: "Full Portfolio" },
           ] as const
         ).map((tab) => {
           const selected = activeTab === tab.id;
@@ -74,7 +74,7 @@ function HomeClientInner({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const reducedMotion = usePrefersReducedMotion();
-  const activeTab = parseTab(searchParams.get("tab")) ?? "navigation";
+  const activeTab = parseTab(searchParams.get("tab")) ?? "consolidated";
 
   useEffect(() => {
     const syncFromHash = () => {
@@ -150,11 +150,17 @@ function HomeClientInner({
   );
 }
 
-function HomeClientFallback() {
+function HomeClientFallback({ consolidated }: { consolidated: ReactNode }) {
   return (
     <div>
-      <HomeTabs activeTab="navigation" onChange={() => undefined} />
-      <div className="h-[calc(100dvh-7rem)] bg-background" />
+      <HomeTabs activeTab="consolidated" onChange={() => undefined} />
+      <div
+        id="home-panel-consolidated"
+        role="tabpanel"
+        aria-labelledby="home-tab-consolidated"
+      >
+        {consolidated}
+      </div>
     </div>
   );
 }
@@ -167,7 +173,7 @@ export function HomeClient({
   sections: Record<SectionId, ReactNode>;
 }) {
   return (
-    <Suspense fallback={<HomeClientFallback />}>
+    <Suspense fallback={<HomeClientFallback consolidated={consolidated} />}>
       <HomeClientInner consolidated={consolidated} sections={sections} />
     </Suspense>
   );
