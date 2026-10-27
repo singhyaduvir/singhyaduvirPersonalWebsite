@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { books } from "@/content/reading";
+import { bookshelfPreview } from "@/content/reading";
 import { Container } from "@/components/container";
 import { SectionHeading } from "@/components/section-heading";
 
@@ -12,7 +12,7 @@ const statusLabel = {
 } as const;
 
 export function Reading() {
-  if (books.length === 0) {
+  if (bookshelfPreview.length === 0) {
     return null;
   }
 
@@ -25,7 +25,7 @@ export function Reading() {
           description="A few books from my shelf."
         />
         <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {books.map((book) => (
+          {bookshelfPreview.map((book) => (
             <li key={book.id} className="flex min-w-0 gap-4">
               <div className="relative h-[14rem] w-[10rem] shrink-0 overflow-hidden border border-border bg-[#ecece8]">
                 <Image
