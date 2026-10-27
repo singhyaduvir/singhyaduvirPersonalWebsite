@@ -23,7 +23,7 @@ export const site = {
   links: {
     linkedin: "https://linkedin.com/in/yaduvir-singh-938759328/",
     github: null as string | null,
-    email: "sing1575@purdue.edu",
+    email: "singhyaduvir2006@gmail.com",
     resume: "/documents/Singh_Yaduvir_Official_Resume.pdf",
   },
   metadata: {

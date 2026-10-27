@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { books } from "@/content/reading";
+import { bookshelf } from "@/content/reading";
 import { Container } from "@/components/container";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function BookshelfPage() {
-  if (books.length === 0) {
+  if (bookshelf.length === 0) {
     notFound();
   }
 
@@ -43,7 +43,7 @@ export default function BookshelfPage() {
 
       <Container className="mt-8 sm:mt-12">
         <ul className="divide-y divide-border">
-          {books.map((book, index) => (
+          {bookshelf.map((book, index) => (
             <li
               key={book.id}
               className="grid gap-7 py-8 first:pt-0 sm:gap-10 md:grid-cols-12 md:py-10"
