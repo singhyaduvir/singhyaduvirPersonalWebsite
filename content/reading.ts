@@ -52,7 +52,7 @@ export const bookshelf: Book[] = [
     title: "A Practical Guide to Quantitative Finance Interviews",
     author: "Xinfeng Zhou",
     status: "reading",
-    review: "9/176 solved. A fantastic collection of brain teasers, logic problems, and statistical reasoning to further your mental dexterity. Truly a treasure trove of fun problems.",
+    review: "19/176 solved. A fantastic collection of brain teasers, logic problems, and statistical reasoning to further your mental dexterity. Truly a treasure trove of fun problems.",
     cover: {
       src: "/images/books/a-practical-guide-to-quantitative-finance-interviews.jpg",
       alt: "Green cover of A Practical Guide to Quantitative Finance Interviews by Xinfeng Zhou.",
